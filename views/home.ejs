@@ -1,0 +1,58 @@
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+    <title>Home</title>
+    
+    
+   
+    <link href="/css/silhome.css" rel="stylesheet">
+  
+    
+  </head>
+
+<% if (locals.user){ %>
+    <div style="background-color:whitesmoke; min-height: 90vh;" >
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+                    <h1 style="text-align: center; font-size: 30px; width:100%; overflow-wrap: break-word;">Welcome back <%=user.name%>!</h1>
+                </div>
+    
+    <%} else{ %>
+        <body>
+
+            <!-- ======= Hero Section ======= -->
+            <section id="hero">
+              <div class="hero-container">
+                <div class="wow fadeIn">
+                  
+          
+                  <h1>Welcome to CDAC silchar Dashboard</h1>
+                  <h2><span class="typed" data-typed-items="Center for Development of Advanced Computing"></span></h2>
+                  <div class="actions">
+                    <a href="/users/sign-in" class="btn-get-started">Sign In</a>
+                    <a href="https://www.cdac.in/index.aspx?id=silchar" class="btn-services">About</a>
+                  </div>
+                </div>
+              </div>
+            </section><!-- End Hero -->
+          
+            <!-- ======= Header ======= -->
+            
+            <!-- Vendor JS Files -->
+           
+            <script src="/vendor/typed.js/typed.min.js"></script>
+           
+          
+            <!-- Template Main JS File -->
+            <script src="/js/silhome.js"></script>
+          
+          </body>
+          
+        <% } %>
+
+

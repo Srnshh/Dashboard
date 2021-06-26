@@ -1,0 +1,382 @@
+<!-- CHANGE :: Creat the code for chat box -->
+<!-- <% if (locals.user){ %>
+	<div id="user-chat-box">
+		<ul id="chat-messages-list">
+			<li class="other-message">
+				<span>Other Message</span>
+			</li>
+			<li class="self-message">
+				<span>
+					Self Message
+				</span>
+				
+			</li>
+
+		</ul>
+		<div id="chat-message-input-container">
+			<input id="chat-message-input" placeholder="Type message here">
+			<button id="send-message" type="button">Send</button>
+		</div>
+
+	</div>
+<% } %> -->
+<% if (locals.user){ %>
+	
+    <!------ Include the above in your HEAD tag ---------->
+    
+    
+    <html>
+        <head>
+        
+          
+
+
+          
+            <link rel="stylesheet" type="text/css" href="/css/message.css">
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+        
+        </head>
+        
+        
+              <div class="inbox_msg" id="chat" style="overflow:scroll; height:550px;  border:2px solid black;  margin-left:60px; margin-right:60px; margin-top:20px;padding-left:50px;padding-right:50px;padding-top:20px;padding-bottom:20px;"> 
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="text-right">
+                            
+                            <a href="#deleteEmployeeModal" class="btn btn-success" data-toggle="modal"><span>Clear chat</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="deleteEmployeeModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form>
+                                <div class="modal-header">						
+                                    <h4 class="modal-title">Clear Chat</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">					
+                                    <p>Are you sure you want to clear chat?</p>
+                                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                    <button onclick="window.location='/group/<%= forform%>/groupchat/alldelete';" class="btn btn-default" data-dismiss="modal">Clear</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="name">
+                   <%= message.chatroom%>
+               </div>
+               <br>
+                 
+               <% for (messages of message.messages){%>
+                <% if(user.email==messages.email) {%>
+               
+                <div class="outgoing_msg " id="<%= messages._id%>">
+                    
+                    <div class="sent_msg ">
+
+                      <p><%= messages.content%></p>
+                      
+                      <span class="time_date"> <%= messages.name%> &nbsp; &nbsp; <%= messages.date%> &nbsp; &nbsp;   <a href="#deleteEmployeeModal<%= messages._id%>" class="edit"  data-toggle="modal">delete</a></span>
+  
+                    </div>
+
+
+                    <div id="deleteEmployeeModal<%= messages._id%>" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form>
+                                    <div class="modal-header">						
+                                        <h4 class="modal-title">Delete message</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">					
+                                        <p>Are you sure you delete this message?</p>
+                                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        
+                                        <button onclick="window.location='/group/<%= forform%>/groupchat/deleteforme/<%= messages._id%>';" class="btn btn-default" data-dismiss="modal">Delete for me</button>
+                                        <button1 data-1="<%= messages._id%>" onclick="window.location='/group/<%= forform%>/groupchat/deleteforeveryone/<%= messages._id%>';" class="btn btn-default" data-dismiss="modal">Delete for everyone</button1>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+        
+                    
+                  </div>
+                  
+
+                  
+                  
+
+                    <% } else{ %>
+                    <div class="incoming_msg " id="<%= messages._id%>">
+                      <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="s"> </div>
+                      <div class="received_msg">
+                        <div class="received_withd_msg">
+                          <p><%= messages.content%></p>
+                          <span class="time_date"> <%= messages.name%> &nbsp; &nbsp; <%= messages.date%> &nbsp; &nbsp;   <a href="#deleteEmployeeModal<%= messages._id%>" class="edit"  data-toggle="modal">delete</a></span></div>
+                          
+                      </div>
+                    
+                      <div id="deleteEmployeeModal<%= messages._id%>" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form>
+                                    <div class="modal-header">						
+                                        <h4 class="modal-title">Delete message</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">					
+                                        <p>Are you sure you delete this message?</p>
+                                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        
+                                        <button onclick="window.location='/group/<%= forform%>/groupchat/deleteforme/<%= messages._id%>';" class="btn btn-default" data-dismiss="modal">Delete for me</button>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    </div>
+                    
+                    <% } %>
+                    <% } %>
+                    <div id="toset"></div>
+                </div>
+                  <div class="type_msg"  style=" margin-left:60px; margin-right:60px; margin-top:20px">
+                    <form method="POST" id="new-post-form" action="/group/<%= forform %>/groupsubmit" class="input_msg_write"  >
+                      <textarea type="text" name="textarea" id="chat-message-input"  placeholder="Type a message" required></textarea>
+                      
+                          
+                      <button class="btn btn-primary pull-right" id="send-message"  type="submit">Send</button>
+                    </div>
+                  </div>
+               
+              
+              
+              
+              
+           
+           
+    <% } %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script >
+        var elmnt = document.getElementById("toset");
+        elmnt.scrollIntoView();
+    
+         
+            
+        
+        
+        class ChatEngine{
+        constructor(userEmail,chatroom){
+            
+            this.userEmail = userEmail;
+            this.chatroom = chatroom;
+            //this.messageid=messageid;
+            //console.log(this.userEmail,this.user2);
+    
+            this.socket = io.connect('http://localhost:5000',{transports: ['websocket'], upgrade: false});
+    
+            if (this.userEmail){
+                this.connectionHandler();
+            }
+    
+        }
+    
+    
+        connectionHandler(){
+            let self = this;
+    
+            this.socket.on('connect', function(){
+                console.log('connection established using sockets...!');
+    
+    
+                self.socket.emit('join_room', {
+                    user_email: self.userEmail,
+                    chatroom: self.chatroom
+                });
+    
+                self.socket.on('user_joined', function(data){
+                    //console.log('a user joined!', data);
+                })
+    
+    
+            });
+    
+            // CHANGE :: send a message on clicking the send message button
+            // $('#send-message').click(function(){
+            //     let msg = $('#chat-message-input').val();
+    
+            //     if (msg != ''){
+            //         self.socket.emit('send_message', {
+            //             message: msg,
+            //             user_email: self.userEmail,
+            //             chatroom: self.chatroom
+            //         });
+            //     }
+            // });
+            
+                let newPostForm = $('#new-post-form');
+                
+        
+                newPostForm.submit(function(e){
+                    e.preventDefault();
+        
+                    $.ajax({
+                        type: 'post',
+                        url: "/group/<%= forform %>/groupsubmit",
+                        data: newPostForm.serialize(),
+                        success: function(data){
+                            self.socket.emit('send_message', {
+                                            message: data.data.message,
+                                            user_email: self.userEmail,
+                                            chatroom: self.chatroom
+                                        });
+                            
+        
+                            
+                            
+                        
+        
+                        }, error: function(error){
+                            console.log(error.responseText);
+                        }
+                    });
+                });
+            
+        
+           
+            self.socket.on('receive_message', function(data){
+               // console.log('message received', data.message.content);
+    
+    
+                
+           let messageType = $(`<div class="incoming_msg" id="${data.message._id}">
+                    <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="s"> </div>
+                    <div class="received_msg">
+                      <div class="received_withd_msg">
+                        <p>${data.message.content}</p>
+                        <span class="time_date"> ${data.message.name} &nbsp; &nbsp; ${data.message.date} &nbsp; &nbsp;   <a href="#deleteEmployeeModal${data.message._id}" class="edit"  data-toggle="modal">delete</a></span></div>
+                    </div>
+                    <div id="deleteEmployeeModal${data.message._id}" class="modal fade">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <form>
+                                  <div class="modal-header">						
+                                      <h4 class="modal-title">Delete message</h4>
+                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  </div>
+                                  <div class="modal-body">					
+                                      <p>Are you sure you delete this message?</p>
+                                      <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                      <button onclick="window.location='/group/${self.chatroom}/groupchat/deleteforme/${data.message._id}';" class="btn btn-default" data-dismiss="modal">Delete for me</button>
+                                      
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+                  `
+                  );
+                
+    
+               
+                
+                if (data.user_email == self.userEmail){
+                    messageType = $(`<div class="outgoing_msg" id="${data.message._id}">
+                    <div class="sent_msg">
+                      <p>${data.message.content}</p>
+                      
+                      <span class="time_date"> ${data.message.name} &nbsp; &nbsp;  ${data.message.date} &nbsp; &nbsp;   <a href="#deleteEmployeeModal${data.message._id}" class="edit"  data-toggle="modal">delete</a></span> </div>
+                     
+                      <div id="deleteEmployeeModal${data.message._id}" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form>
+                                <div class="modal-header">						
+                                    <h4 class="modal-title">Delete message</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">					
+                                    <p>Are you sure you delete this message?</p>
+                                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                </div>
+                                <div class="modal-footer">
+                                    
+                                    <button onclick="window.location='/group/${self.chatroom}/groupchat/deleteforme/${data.message._id}';" class="btn btn-default" data-dismiss="modal">Delete for me</button>
+                                    <button1 data-1="${data.message._id}" onclick="window.location='/group/${self.chatroom}/groupchat/deleteforeveryone/${data.message._id}';" class="btn btn-default" data-dismiss="modal">Delete for everyone</button1>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                  
+                  
+                      </div>
+                  
+ 
+                `);
+                }
+    
+                
+    
+                $('#chat').append(messageType);
+                
+
+
+
+
+
+
+
+                var elmnt = document.getElementById("toset");
+                elmnt.scrollIntoView();
+                document.getElementById("chat-message-input").value="";
+            })
+
+            $(document).on("click","button1",function() {
+                var t = $(this).attr('data-1');
+                //console.log(t);
+                self.socket.emit('delete_message', {
+                                            id: t,
+                                            user_email: self.userEmail,
+                                            chatroom: self.chatroom
+                                        });
+            }); 
+            self.socket.on('deleted_message', function(data){
+                //console.log('message received', data.message.content);
+                var a="#"+data.id;
+                //console.log(data.id);
+                $(a).remove();
+            });
+
+        }
+    }
+    </script>
+    <% if (locals.user){ %>
+    <script>
+        new ChatEngine('<%= locals.user.email %>','<%= locals.message.chatroom %>')
+    </script>
+    <% } %>
+   
+      
+    </html>

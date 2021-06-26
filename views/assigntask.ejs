@@ -1,0 +1,73 @@
+
+
+
+
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="/css/assigntask1.css">
+<link rel="stylesheet" type="text/css" href="/css/assigntask.css">
+
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" id="new-post-form" method="POST" action="/group/<%= groupname%>/submit/<%= topass.id%>" onsubmit="do_something()">
+				
+
+				<div class="wrap-input100  bg1" >
+					<span class="label-input100">NAME</span>
+					<input class="input100" type="text" name="name" value="<%= topass.name%>" required>
+				</div>
+				<div class="wrap-input100  bg1" >
+					<span class="label-input100">Email</span>
+					<input class="input100" type="text" name="email" value="<%= topass.email%>" required>
+				</div>
+
+
+				<div class="wrap-input100  bg1 rs1-wrap-input100" >
+					<span class="label-input100">Start Date</span>
+					<input class="input100" type="date" name="startdate" placeholder="Enter Start Date   "  required>
+				</div>
+
+				<div class="wrap-input100 bg1  bg1 rs1-wrap-input100">
+					<span class="label-input100">End Date</span>
+					<input class="input100" type="date" name="enddate" placeholder="Enter End Date " required >
+				</div>
+
+				
+
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Task</span>
+					<textarea class="input100" name="content" placeholder="Your message here..."  required></textarea>
+				</div>
+				<input type="hidden" id="hiddendate" name="postdate">
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" type="submit">
+						<span>
+							Submit
+							
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+    <script>
+		function do_something(){
+			const d = (new Date()).toLocaleString();
+			
+			document.getElementById("hiddendate").value=d;
+	   
+	   return true;
+	
+	
+	}
+	</script>
+	 
+</body>
+
+<!--===============================================================================================-->
+	
+
+
+

@@ -1,0 +1,155 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<link class="js-stylesheet" href="/css/light.css" rel="stylesheet">
+
+<body style="font-size: 0.9em; " data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky">
+	<div class="wrapper" >
+		<nav id="sidebar"  class="sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="/">
+
+    
+          <span class="align-middle mr-3">DASHBOARD</span>
+        </a>
+
+				<ul class="sidebar-nav">
+					
+					
+					
+								
+				
+
+					
+					
+			
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/heirarchy">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Heirarchy</span>
+            </a>
+					</li>
+                    <li class="sidebar-item">
+						<a class="sidebar-link" href="/dailylog">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Daily-Log</span>
+            </a>
+				
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/giventask">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">My Tasks</span>
+            </a>
+					</li>
+					<% if(user.access=="admin") {%>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/group/creategroup">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Create Group</span>
+            </a>
+					</li>
+					<% } %>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/group/mygroups">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">My Groups</span>
+            </a>
+					</li>
+                    
+					<!-- <li class="sidebar-item">
+						<a class="sidebar-link" href="/assigntask">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Assign Task</span>
+            </a>
+					</li> -->
+                    <li class="sidebar-item">
+						<a class="sidebar-link" href="/users/profile/<%= user.id %>">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">My Profile</span>
+            </a>
+					</li>
+                    <li class="sidebar-item">
+						<a class="sidebar-link" href="/friends">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">All Friends</span>
+            </a>
+			</li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="/users/sign-out">
+      <i class="align-middle" data-feather="list"></i> <span class="align-middle">Sign-Out</span>
+    </a>
+    </li>
+					
+				</ul>
+				<div style="
+					position: absolute;
+					left: 0;
+					bottom: 0">
+					<p>
+						&#169; CDAC. All Rights Reserved
+					</p>
+				  </div>
+				
+		</nav>
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle">
+          <i class="hamburger align-self-center"></i>
+        </a>
+        <h1><%= title %></h1>
+
+				
+
+				
+
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="/chatnotification" id="messagesDropdown" >
+								<div class="position-relative">
+									<i class="align-middle" data-feather="message-circle" style="height:36px; width: 32px;"></i>
+									<!-- <span class="indicator"></span> -->
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="messagesDropdown">
+								<div class="dropdown-menu-header">
+									<div class="position-relative">
+										
+									</div>
+								</div>
+								
+								
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="/notification" id="alertsDropdown" >
+								<div class="position-relative">
+									<i class="align-middle" data-feather="bell" style="height:36px; width: 32px;"></i>
+                                    <!-- <span class="indicator"></span> -->
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="alertsDropdown">
+								<div class="dropdown-menu-header">
+									
+								</div>
+								
+						</li>
+						
+							
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
+                <i class="align-middle" data-feather="settings"></i>
+              </a>
+
+							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
+								<% if(user.avatar){ %>
+									<img src="<%= user.avatar%>"  class="avatar img-fluid rounded-circle mr-1">
+								<% } else { %>  				
+				<img src="/images/1.jpg" class="avatar img-fluid rounded-circle mr-1"> 
+				<% } %>
+				<span style="font: 1.5em sans-serif; color:darkgray;"  >My</span>
+              </a>
+							<div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="/users/profile/<%= user.id %>">Profile</a>
+								
+								<a class="dropdown-item" href="/users/sign-out">Sign-out</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+        
+        <script src="/js/layout.js"></script>
+           
+        </body>

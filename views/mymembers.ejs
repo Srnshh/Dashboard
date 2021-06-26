@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<style>
+#change{
+    margin-left:30px;
+    margin-right:30px;
+    margin-top:15px;
+    
+
+}
+
+#myInput {
+  background-image: url('/images/search.png');
+  background-position: 5px 8px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 18x;
+  padding: 6px 10px 6px 30px;
+  border: 2px solid #ddd;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li  {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+.profile-photo-lg{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+</style>
+</head>
+<div id="change">
+
+
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="   Search for names.." title="Type in a name">
+
+<ul id="myUL">
+    <% for(var u=1;u<=all_users.length;u++) {%>
+  <li> <div class="row">
+    <div class="col-md-2 col-sm-2">
+      <% if(all_users[u-1].avatar){ %>
+        <img src="<%= all_users[u-1].avatar%>"  class="profile-photo-lg">
+    <% }else{ %>  
+        <img src="/images/1.jpg"  class="profile-photo-lg">
+        <% } %>  
+    </div>
+    <div class="col-md-7 col-sm-7">
+      <p><%=all_users[u-1].name %>[<%=all_users[u-1].designation %>]</a></p>
+      <h5><%= all_users[u-1].email %></h5>
+      
+    </div>
+    <div class="col-md-1 col-sm-1">
+      <button class="btn btn-primary pull-right" onclick="window.location.href = '/group/<%= topass%>/assigntask/<%=all_users[u-1].id %>';">Asssign task</button>
+    </div>
+    <div class="col-md-1 col-sm-1">
+      <button class="btn btn-primary pull-right" onclick="window.location.href = '/hisdailylog/<%=all_users[u-1].id %>';">His dailylog</button>
+    </div>
+    <div class="col-md-1 col-sm-1">
+      <button class="btn btn-primary pull-right" onclick="window.location.href = '/group/<%= topass%>/hisgiventask/<%=all_users[u-1].id %>';">His tasks</button>
+    </div>
+    
+
+</div></li>
+  <% } %>
+</ul>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("p")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+</div>
+</html>

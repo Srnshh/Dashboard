@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/tree.css">
+</head>
+<body>
+  <div id="tree"></div>
+  
+  <script src="/js/tree.js"></script>
+  <script >
+    /* globals Tree */
+
+
+var tree = new Tree(document.getElementById('tree'), {
+  navigate: true // allow navigate with ArrowUp and ArrowDown
+});
+
+var structure = [
+
+{
+  name: 'folder 1',
+ 
+  type: Tree.FOLDER,
+  
+  
+  children: [{
+    name: 'file 1/1',
+    type: Tree.FOLDER,
+    children:[]
+  }, {
+    name: 'file 1/2',
+    type: Tree.FOLDER,
+    children:[]
+  }, {
+    name: 'folder 1/1',
+    type: Tree.FOLDER,
+    children: [{
+      name: 'folder 1/1/1',
+      type: Tree.FOLDER,
+      children: [{
+        name: 'folder 1/1/1/1',
+        type: Tree.FOLDER,
+        children: [{
+          name: 'file 1/1/1/1/1',
+          type: Tree.FOLDER,
+          children:[]
+        }, {
+          name: 'file 1/1/1/1/2',
+          type: Tree.FOLDER,
+          children:[]
+        }]
+      }]
+    }]
+  }]
+}
+];
+var arry = <%- JSON.stringify(topass) %>;
+console.log(arry);
+function convertToHierarchy(arry) { 
+
+   
+
+    var nodeObjects = createStructure(arry);
+
+    for (var i = nodeObjects.length - 1; i >= 0; i--) {
+        var currentNode = nodeObjects[i];
+
+        //Skip over root node.
+        if (currentNode.value.Parent == "") {
+            continue;
+        }
+
+        var parent = getParent(currentNode, nodeObjects);
+
+        if (parent == null) {
+            continue;
+        }
+
+        parent.children.push(currentNode);
+        nodeObjects.splice(i, 1);
+    }
+
+    //What remains in nodeObjects will be the root nodes.
+    return nodeObjects;
+}
+
+function createStructure(nodes) {
+    var objects = [];
+
+    for (var i = 0; i < nodes.length; i++) {
+        objects.push({ value: nodes[i], name:nodes[i].Name,type: Tree.FOLDER,children: [] });
+    }
+
+    return objects;
+}
+
+function getParent(child, nodes) {
+    var parent = null;
+
+    for (var i = 0; i < nodes.length; i++) {
+        if (nodes[i].value.Id == child.value.Parent) {
+            return nodes[i];
+        }
+    }
+
+    return parent;
+}
+var structure1=convertToHierarchy(arry);
+// console.log(structure);
+tree.json(structure1);
+
+  </script>
+</body>
+</html>

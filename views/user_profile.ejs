@@ -1,0 +1,180 @@
+        <link rel="stylesheet" href="/css/user_profile.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <style>
+            
+            
+            .boxes {
+              width: 100%;
+              background-color: #ddd;
+            }
+            
+            .skills {
+              
+              padding-top: 15px;
+              padding-bottom: 15px;
+              color: white;
+            }
+            
+            .html {width: 10%; background-color:lightblue;}
+            .css {width: 10%; background-color:lightcoral;}
+            .js{width: 10%; background-color:lightgreen;}
+            </style>
+        
+
+
+
+
+
+
+
+
+
+
+       
+            <div class="container">
+                <div class="row gutters">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="account-settings">
+                            <div class="user-profile">
+                                <div class="user-avatar">
+                                    <% if(!profile_user.avatar){ %> 
+                                    <img src="/images/1.jpg" alt="Maxwell Admin">
+                                    <%} else {%>
+                                    <img src="<%= profile_user.avatar %>" alt="Maxwell Admin">
+                                    <%} %>
+                                </div>
+                                <h5 style="color:black; font-weight: bolder; font-size: 1.5em;"><%= profile_user.name %></h5>
+                                <h5 style="color:#0062cc;" ><%= profile_user.email %></h5>
+                            </div>
+                            <% if(profile_user.qualification){ %> 
+                            <div class="about">
+                                <h3>Qualification</h3>
+                                <p style="color:#0062cc;" ><%= profile_user.qualification %></p>
+                            </div>
+                            <%} %>
+                            <% if(user.id == profile_user.id){ %>
+                            <div class="about">
+                                <button type="button" id="submit" name="submit" class="btn btn-primary" onclick="window.location.href = '/users/changepass';" >Change Password</button>  
+                            </div>
+                            <%} %>
+                            
+                            <% if(!profile_user.access){ %>
+                            <div class="about">
+                                
+                                <h3 style="color:#0062cc;" >Total tasks <%= total%></h3>
+                            </div>
+                            <div class="about">                           
+                                <p>Total ongoing tasks - <%= ongoing%>%</p>
+                                <div class="boxes">
+                                    
+                                  <div class="skills js" style="width:<%= ongoing%>%"></div>
+                                </div>
+                            </div>
+                            <div class="about">                           
+<p>Tasks completed on time - <%= ontime%>%</p>
+<div class="boxes">
+    
+  <div class="skills html" style="width:<%= ontime%>%"></div>
+</div>
+                            </div>
+                            <div class="about">
+                                <p>Tasks not completed on time - <%= notontime%>%</p>
+<div class="boxes">
+  <div class="skills css" style="width:<%= notontime%>%"></div>
+</div>
+</div>
+<%} %>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                <p><%= profile_user.name %></p>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                <p><%= profile_user.email %></p>
+                            </div>
+                        </div>
+                        
+                        <% if(profile_user.phone){ %>
+                        <div class="row">
+                            <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                <p><%= profile_user.phone %></p>
+                            </div>
+                        </div>
+                        <%} %>
+                        <% if(profile_user.designation){ %>
+                        <div class="row">
+                            <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                <label>Designation</label>
+                            </div>
+                            <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                <p><%= profile_user.designation %></p>
+                            </div>
+                        </div>
+                        <%} %>
+                        <% if(profile_user.group && profile_user.access!="admin" ){ %>
+                            <div class="row">
+                                <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                    <label>Group</label>
+                                </div>
+                                <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                    <p><%= profile_user.group %></p>
+                                </div>
+                            </div>
+                            <%} %>
+                        <% if(profile_user.dob){ %>
+                        <div class="row">
+                            <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                <label>Date of Birth</label>
+                            </div>
+                            <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                <p><%= profile_user.dob %></p>
+                            </div>
+                        </div>
+                        <%} %>
+                        <% if(profile_user.street){ %>
+                        <div class="row">
+                            <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                <label>Address</label>
+                            </div>
+                            <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                <p><%= profile_user.street %>,<%= profile_user.city %>,<%= profile_user.state %></p>
+                            </div>
+                        </div>
+                        <%} %>
+                            <% if(user.id == profile_user.id){ %>     
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                   
+                                    <button type="button" id="submit" name="submit" class="btn btn-primary" onclick="window.location.href = '/users/update/<%= profile_user.id %>';" >Edit Profile</button>
+                                </div>
+                            </div>
+                        </div>
+                        <%} %>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+  

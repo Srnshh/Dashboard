@@ -1,0 +1,10 @@
+const express = require('express');
+const passport = require('passport');
+const router = express.Router();
+const chatController = require('../controllers/chat_controller');
+router.get('/:id',passport.checkAuthentication, chatController.chat);
+router.post('/:id/submit', passport.checkAuthentication,chatController.submit);
+router.get('/:id/deleteforme/:id2', passport.checkAuthentication,chatController.deleteforme);
+router.get('/:id/alldelete',passport.checkAuthentication,chatController.alldelete);
+router.get('/:id/deleteforeveryone/:id2', passport.checkAuthentication,chatController.deleteforeveryone);
+module.exports = router;
