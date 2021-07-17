@@ -48,20 +48,57 @@ div.container {
 
     <div class="container">
 <form method="POST" action="/group/<%= groupname%>/submitproject" enctype="multipart/form-data">
-    <label for="title">Title</label>
-    <input type="text" id="title" name="title" placeholder="title......">
+    <label for="title">Project Title</label>
+    <input type="text" id="title" name="title" placeholder="title......" required>
   
     <label for="about">About</label>
-    <input type="text" id="lname" name="about" placeholder="about......">
-  
-    <label for="status">Status</label>
-    <select id="status" name="status">
-      <option value="Current">Current</option>
-      <option value="Proposed">Proposed</option>
+    <input type="text" id="lname" name="about" placeholder="about......" required>
+
+    <label for="title">Project Incharge</label>
+    <input type="text" id="title" name="projectincharge" placeholder="project incharge......">
+
+    
+ 
+    <label for="title">Project code</label>
+    <input type="text" id="title" name="projectcode" placeholder="project code......">
+ 
+    <label for="title">Financial budget outley</label>
+    <input type="text" id="title" name="financial" placeholder="Financial budget outley......" required>
+    
+    <label for="title">Collaborating agency</label>
+    <input type="text" id="title" name="agency" placeholder="Collaborating agency......" required>
+
+    <label for="title">End User</label>
+    <input type="text" id="title" name="enduser" placeholder="End user......" required>
+     
+    <label for="title">Implementing state</label>
+    <input type="text" id="title" name="implementingstate" placeholder="Implementing state......">
+ 
+    <label for="status">Project type</label>
+    <select id="status" name="projecttype">
+      <option value="Funded">Funded</option>
+      <option value="Business">Business</option>
       
     </select>
+     
+    <label for="title">Project Start date</label>
+    <input type="date" id="title" name="projectstartdate" placeholder="project start date......" required>
+   
+    <label for="title">Project End date</label>
+    <input type="date" id="title" name="projectenddate" placeholder="project end date......" required>
+
+    <label for="title">Project duration</label>
+    <input type="number" id="title" name="projectduration" placeholder="project duration......">
+
+    <label for="title">MOU date</label>
+    <input type="date" id="title" name="moudate" placeholder="MOU date......">
+
+    
+<br>
+
+    
     <label for="lname">Attach Pdf</label>
-    <br>
+    
     <br>
     <input type="file" id="lname" name="pdf" required>
   

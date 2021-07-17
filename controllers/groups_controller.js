@@ -199,7 +199,7 @@ module.exports.gotogroup = async function(req, res){
         try{
             
         let v=await Project.find({group:req.params.id}).sort('-createdAt');
-            
+       
             return res.render('allprojects',{
                 title:"All projects",
                 all_projects:v,
@@ -246,13 +246,8 @@ module.exports.submitproject = async function(req, res){
             
             Project.uploadedAvatar(req, res, async function(err){
                 if (err) {console.log('*****Multer Error: ', err)}
-                var p=await Project.create({title:req.body.title,
-                    about:req.body.about,
-                    status:req.body.status,
-                    group:req.params.id
-                    
-                });
-            
+                var p=await Project.create(req.body);
+                p.group=req.params.id
             
                 //console.log(req.file);
                 if (req.file){
@@ -316,24 +311,24 @@ module.exports.deleteproject = async function(req, res){
 } 
 
 
-module.exports.markascompleted = async function(req, res){
-    try{
+// module.exports.markascompleted = async function(req, res){
+//     try{
         
-    let v=await Project.findById(req.params.id2);
-    v.status="completed";
-    v.save();
+//     let v=await Project.findById(req.params.id2);
+//     v.status="completed";
+//     v.save();
 
-    req.flash('success', 'mark as completed');
+//     req.flash('success', 'mark as completed');
 
-    return res.redirect(`/group/${req.params.id}/allprojects`);
+//     return res.redirect(`/group/${req.params.id}/allprojects`);
 
-    }catch(err){
+//     }catch(err){
      
-        // added this to view the error on console as well
-        return res.render("errorpage",{title:"Error",pass:"404 Not Found"});
-    }
+//         // added this to view the error on console as well
+//         return res.render("errorpage",{title:"Error",pass:"404 Not Found"});
+//     }
   
-} 
+// } 
 
 module.exports.editproject = async function(req, res){
     try{
@@ -366,10 +361,8 @@ module.exports.updateproject = async function(req, res){
             
             Project.uploadedAvatar(req, res, async function(err){
                 if (err) {console.log('*****Multer Error: ', err)}
-                let p=await Project.findById(req.params.id2);
-                p.title=req.body.title;
-                p.about=req.body.about;
-                p.status=req.body.status;
+                let p=await Project.findByIdAndUpdate(req.params.id2,req.body);
+                
                    
                     
           
@@ -410,6 +403,7 @@ module.exports.showproject = async function(req, res){
     try{
         
     let v=await Project.findById(req.params.id2);
+    
     if(!v){
         return res.render("errorpage",{title:"Error",pass:"404 Not Found"}); 
     }

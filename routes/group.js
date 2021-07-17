@@ -34,7 +34,7 @@ router.post('/:id/submitproject', passport.checkAuthentication,groupController.c
 router.get('/:id/allprojects/download/:id2', passport.checkAuthentication,groupController.checkgroup,groupController.download);
 router.get('/:id/allprojects/delete/:id2', passport.checkAuthentication,groupController.checkgroup,groupController.deleteproject);
 router.get('/:id/allprojects/edit/:id2', passport.checkAuthentication,groupController.checkgroup,groupController.editproject);
-router.get('/:id/allprojects/markascompleted/:id2', passport.checkAuthentication,groupController.checkgroup,groupController.markascompleted);
+//router.get('/:id/allprojects/markascompleted/:id2', passport.checkAuthentication,groupController.checkgroup,groupController.markascompleted);
 router.post('/:id/allprojects/updateproject/:id2', passport.checkAuthentication,groupController.checkgroup,groupController.updateproject);
 router.get('/:id/allprojects/:id2', passport.checkAuthentication,groupController.checkgroup,groupController.showproject);
 module.exports = router;

@@ -22,6 +22,41 @@ const userSchema = new mongoose.Schema({
         
        
     },
+    employeeid: {
+        type: String
+        
+       
+    },
+    employmenttype: {
+        type: String
+        
+       
+    },
+    joiningdate: {
+        type: String
+        
+       
+    },
+    currentpay: {
+        type: String
+        
+       
+    },
+    fla: {
+        type: String
+        
+       
+    },
+    sla: {
+        type: String
+        
+       
+    },
+    skillsset: {
+        type: String
+        
+       
+    },
     group: {
         type: String
        

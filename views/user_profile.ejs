@@ -102,7 +102,16 @@
                                 <p><%= profile_user.name %></p>
                             </div>
                         </div>
-                        
+                        <% if(profile_user.employeeid){ %>
+                            <div class="row">
+                                <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                    <label>Employee ID</label>
+                                </div>
+                                <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                    <p><%= profile_user.employeeid%></p>
+                                </div>
+                            </div>
+                            <%} %>
                         <div class="row">
                             <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
                                 <label>Email</label>
@@ -152,6 +161,67 @@
                             </div>
                         </div>
                         <%} %>
+                        <% if(profile_user.joiningdate){ %>
+                            <div class="row">
+                                <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                    <label>Joining date</label>
+                                </div>
+                                <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                    <p><%= profile_user.joiningdate %></p>
+                                </div>
+                            </div>
+                            <%} %>
+                            <% if(profile_user.employmenttype){ %>
+                                <div class="row">
+                                    <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                        <label>Employment type</label>
+                                    </div>
+                                    <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                        <p><%= profile_user.employmenttype %></p>
+                                    </div>
+                                </div>
+                                <%} %>
+                                <% if(profile_user.currentpay){ %>
+                                    <div class="row">
+                                        <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                            <label>Current pay scale</label>
+                                        </div>
+                                        <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                            <p><%= profile_user.currentpay %></p>
+                                        </div>
+                                    </div>
+                                    <%} %>    
+                                   
+                                        <% if(profile_user.fla){ %>
+                                            <div class="row">
+                                                <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                                    <label>FLA</label>
+                                                </div>
+                                                <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                                    <p><%= profile_user.fla %></p>
+                                                </div>
+                                            </div>
+                                            <%} %>  
+                                            <% if(profile_user.sla){ %>
+                                                <div class="row">
+                                                    <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                                        <label>SLA</label>
+                                                    </div>
+                                                    <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                                        <p><%= profile_user.sla %></p>
+                                                    </div>
+                                                </div>
+                                                <%} %>
+                                    <% if(profile_user.skillsset){ %>
+                                        <div class="row">
+                                            <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">
+                                                <label>skillsset</label>
+                                            </div>
+                                            <div class="col-md-6" style="color:gray; font-weight: 500; font-size: 1.5em;">
+                                                <p><%= profile_user.skillsset %></p>
+                                            </div>
+                                        </div>
+                                        <%} %> 
                         <% if(profile_user.street){ %>
                         <div class="row">
                             <div class="col-md-6" style="color:#0062cc; font-weight: 400; font-size: 1.5em;">

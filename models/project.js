@@ -5,7 +5,7 @@ const AVATAR_PATH = path.join('/uploads/pdfs');
 
 const groupSchema = new mongoose.Schema({
    
-    status: {
+    projecttype: {
         type: String
         
     },
@@ -14,6 +14,46 @@ const groupSchema = new mongoose.Schema({
         
     },
     about: {
+        type: String
+        
+    },
+    projectincharge: {
+        type: String
+        
+    },
+    projectcode: {
+        type: String
+        
+    },
+    financial: {
+        type: String
+        
+    },
+    agency: {
+        type: String
+        
+    },
+    enduser: {
+        type: String
+        
+    },
+    implementingstate: {
+        type: String
+        
+    },
+    projectstartdate: {
+        type: String
+        
+    },
+    projectenddate: {
+        type: String
+        
+    },
+    projectduration: {
+        type: String
+        
+    },
+    moudate: {
         type: String
         
     },

@@ -96,21 +96,13 @@ module.exports.update = async function(req, res){
 
         try{
 
-            let user = await User.findById(req.params.id);
+            //let user = await User.findById(req.params.id);
             
             
             User.uploadedAvatar(req, res,async function(err){
                 if (err) {console.log('*****Multer Error: ', err)}
+                let user = await User.findByIdAndUpdate(req.params.id,req.body)
                 
-                user.name = req.body.name;
-                
-                user.phone=req.body.phone,
-                user.qualification=req.body.qualification,
-                user.dob=req.body.dob,
-                user.city=req.body.city,
-                user.state=req.body.state,
-                user.street=req.body.street
-            
             
                 //console.log(req.file);
                 if (req.file){
